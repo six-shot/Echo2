@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        width: 200px;
+        padding: 10px;
+        text-align: center;
+      }
+      button {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: white;
+      }
+      #startButton {
+        background-color: #4caf50;
+      }
+      #startButton:hover {
+        background-color: #45a049;
+      }
+      #stopButton {
+        background-color: #f44336;
+        display: none;
+      }
+      #stopButton:hover {
+        background-color: #da190b;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="startButton">Start Recording</button>
+    <button id="stopButton">Stop Recording</button>
+    <script src="popup.js"></script>
+  </body>
+</html>

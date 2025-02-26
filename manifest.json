@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Audio Recorder",
+  "version": "1.0",
+  "description": "Records the current tab in an offscreen document.",
+  "minimum_chrome_version": "116",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/not-recording.png",
+      "48": "icons/not-recording.png",
+      "128": "icons/not-recording.png"
+    }
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "permissions": ["tabCapture", "offscreen"]
+}
