@@ -43,6 +43,7 @@ document.getElementById("startButton").addEventListener("click", async () => {
     startButton.style.display = "none";
     stopButton.style.display = "block";
     isRecording = true;
+    document.getElementById("microphoneIcon").src = "/icons/microphonefill.svg";
   } catch (error) {
     console.error("Error starting recording:", error);
     // If there's an error, ensure we're in the correct state
@@ -65,6 +66,8 @@ document.getElementById("stopButton").addEventListener("click", async () => {
     startButton.style.display = "block";
     stopButton.style.display = "none";
     isRecording = false;
+    document.getElementById("microphoneIcon").src =
+      "/icons/microphonenofill.svg";
   } catch (error) {
     console.error("Error stopping recording:", error);
   }

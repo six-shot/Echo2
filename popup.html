@@ -2,38 +2,180 @@
 <html>
   <head>
     <style>
+      @font-face {
+        font-family: "Teknaf";
+        src: url("/fonts/teknafregular-rv0ab.otf") format("opentype");
+      }
+
       body {
-        width: 200px;
-        padding: 10px;
-        text-align: center;
+        margin: 0;
+        padding:0px 12px;
+        box-sizing: border-box;
+        width: 283px;
+        height: 400px;
+        background-color: #0f1018;
+        border-radius: 13px;
+        font-family: "Teknaf", sans-serif;
+        display: flex;
+        flex-direction: column;
       }
       button {
-        width: 100%;
-        padding: 8px;
-        margin: 5px 0;
+        font-size: 21px;
+        border-radius: 260px;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 110px;
         border: none;
-        border-radius: 4px;
+        font-family: "Teknaf", sans-serif;
         cursor: pointer;
-        color: white;
       }
       #startButton {
-        background-color: #4caf50;
+        background-color: #e15e36;
+        color: white;
       }
-      #startButton:hover {
-        background-color: #45a049;
-      }
+
       #stopButton {
-        background-color: #f44336;
+        background-color: white;
         display: none;
       }
-      #stopButton:hover {
-        background-color: #da190b;
+      .title {
+        font-size: 21px;
+        color: #ffff;
+        text-transform: uppercase;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        padding: 11px 0px;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .logo {
+        width: 24px;
+        height: 29px;
+      }
+      .tab-id {
+        font-size: 14px;
+        color: #ffff;
+        text-transform: uppercase;
+      }
+      .tab-id-value {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.65);
+        text-transform: uppercase;
+      }
+      .tab-id-container {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .tab-id-value-container {
+        height: 24px;
+        padding: 0 7px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 332px;
+      }
+      .content {
+        margin-top: 54px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+      }
+      .wave-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .button-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .microphone-container {
+        width: 110px;
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(217, 217, 217, 0.06);
+        border-radius: 50%;
+      }
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 12px;
+        margin-top: auto;
+      }
+      .web-logo {
+        width: 12px;
+        height: 12px;
+      }
+      .discord-logo {
+        width: 12px;
+        height: 12px;
+      }
+      .footer-container {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        height: 20px;
+        padding: 0 6px;
+        background-color: rgba(255, 255, 255, 0.07);
+        border-radius: 113px;
       }
     </style>
   </head>
   <body>
-    <button id="startButton">Start Recording</button>
-    <button id="stopButton">Stop Recording</button>
+    <div class="header">
+      <div class="logo-container">
+        <img src="/icons/yuki.svg" alt="yuki" class="logo" />
+        <span class="title">Yuki</span>
+      </div>
+      <div class="tab-id-container">
+        <span class="tab-id">Tab ID:</span>
+        <div class="tab-id-value-container">
+          <span class="tab-id-value">34fdws</span>
+          <img src="/icons/copy.svg" alt="copy" />
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="microphone-container">
+        <img
+          src="/icons/microphonenofill.svg"
+          alt="microphone"
+          id="microphoneIcon"
+        />
+      </div>
+      <div class="wave-container">
+        <img src="/icons/wave.svg" alt="wave" class="wave" />
+        <div class="button-container">
+          <button id="startButton">Start</button>
+          <button id="stopButton">Stop</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-container">
+        <img src="/icons/web.svg" alt="web" class="web-logo" />
+        <img src="/icons/x.svg" alt="x" class="x-logo" />
+      </div>
+    </div>
+
     <script src="popup.js"></script>
   </body>
 </html>
