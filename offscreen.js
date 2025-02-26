@@ -5,13 +5,25 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         sendResponse({ isRecording: recorder?.state === "recording" });
         return true; // Required for async response
       case "start-recording":
-        startRecording(message.data);
-        break;
+        startRecording(message.data)
+          .then(() => sendResponse({ success: true }))
+          .catch((error) =>
+            sendResponse({ success: false, error: error.message })
+          );
+        return true; // Required for async response
       case "stop-recording":
-        stopRecording();
-        break;
+        stopRecording()
+          .then(() => sendResponse({ success: true }))
+          .catch((error) =>
+            sendResponse({ success: false, error: error.message })
+          );
+        return true; // Required for async response
       default:
-        throw new Error("Unrecognized message:", message.type);
+        sendResponse({
+          success: false,
+          error: `Unrecognized message: ${message.type}`,
+        });
+        return true;
     }
   }
 });
@@ -66,11 +78,18 @@ async function startRecording(streamId) {
 }
 
 async function stopRecording() {
-  recorder.stop();
+  if (!recorder) {
+    throw new Error("No active recording to stop");
+  }
 
-  // Stopping the tracks makes sure the recording icon in the tab is removed.
-  recorder.stream.getTracks().forEach((t) => t.stop());
-
-  // Update current state in URL
-  window.location.hash = "";
+  try {
+    recorder.stop();
+    // Stopping the tracks makes sure the recording icon in the tab is removed.
+    recorder.stream.getTracks().forEach((t) => t.stop());
+    // Update current state in URL
+    window.location.hash = "";
+  } catch (error) {
+    console.error("Error stopping recording:", error);
+    throw error;
+  }
 }
