@@ -42,7 +42,13 @@ async function startRecording(streamId) {
   recorder.ondataavailable = (event) => data.push(event.data);
   recorder.onstop = () => {
     const blob = new Blob(data, { type: "audio/webm" });
-    window.open(URL.createObjectURL(blob), "_blank");
+
+    // Create download link and trigger download
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = `tab-recording-${new Date().toISOString()}.webm`;
+    downloadLink.click();
+    URL.revokeObjectURL(downloadLink.href);
 
     // Clear state ready for next recording
     recorder = undefined;
